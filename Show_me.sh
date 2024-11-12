@@ -26,7 +26,7 @@ echo "Use Socket Statistics for show the open ports:"
 
 if command -v ss &> /dev/null
 then
-	sudo ss -tuln | awk 'NR>1 {print $1, $4}'
+	sudo ss -tuln | awk 'NR>1 {split($5, a, ":"); print a[2]}'
 else
 	pass
 	exit 1
