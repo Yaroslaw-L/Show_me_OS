@@ -19,3 +19,15 @@ echo "***"
 
 echo "Users with Bash shell:"
 awk -F: '/\/bin\/bash$/ {print $1}' /etc/passwd
+
+echo "***"
+
+echo "Use Socket Statistics for show the open ports:"
+
+if command -v ss &> /dev/null
+then
+	sudo ss -tuln | awk 'NR>1 {print $1, $4}'
+else
+	pass
+	exit 1
+fi
