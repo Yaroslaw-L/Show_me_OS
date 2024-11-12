@@ -14,3 +14,8 @@ if [ -f /etc/upstream-release/lsb-release ]; then
 else
 	pass
 fi
+
+echo "***"
+
+echo "Users with Bash shell:"
+awk -F: '/\/bin\/bash$/ {print $1}' /etc/passwd
